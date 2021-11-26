@@ -1,0 +1,64 @@
+body {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+#squareContainer {
+    background-color: blue;
+    grid-row: 2 / 6;
+    grid-column: 3 / 7;
+    margin: 0;
+    display: grid;
+    text-align: center;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 100px;
+}
+
+nav {
+    background-color: blueviolet;
+    grid-row: 2 / 6;
+    grid-column: 1;
+    text-align: center;
+}
+
+#oneOne {
+    background-color: purple;
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
+}
+#oneTwo {
+    background-color: red;
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
+}
+#oneThree {
+    background-color: cadetblue;
+    border-bottom: 5px solid black;
+}
+#twoOne {
+    background-color: cyan;
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
+}
+#twoTwo {
+    background-color: darkgoldenrod;
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
+}
+#twoThree {
+    background-color: darkred;
+    border-bottom: 5px solid black;
+}
+#threeOne {
+    background-color: darkslategrey;
+    border-right: 5px solid black;
+}
+#threeTwo {
+    background-color:fuchsia;
+    border-right: 5px solid black;
+}
+#threeThree {
+    background-color:honeydew;
+}
