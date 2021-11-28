@@ -24,12 +24,12 @@ nav {
 }
 
 #oneOne {
-    background-color: purple;
+    background-color: cadetblue;
     border-bottom: 5px solid black;
     border-right: 5px solid black;
 }
 #oneTwo {
-    background-color: red;
+    background-color: cadetblue;
     border-bottom: 5px solid black;
     border-right: 5px solid black;
 }
@@ -38,27 +38,33 @@ nav {
     border-bottom: 5px solid black;
 }
 #twoOne {
-    background-color: cyan;
+    background-color: cadetblue;
     border-bottom: 5px solid black;
     border-right: 5px solid black;
 }
 #twoTwo {
-    background-color: darkgoldenrod;
+    background-color: cadetblue;
     border-bottom: 5px solid black;
     border-right: 5px solid black;
 }
 #twoThree {
-    background-color: darkred;
+    background-color: cadetblue;
     border-bottom: 5px solid black;
 }
 #threeOne {
-    background-color: darkslategrey;
+    background-color: cadetblue;
     border-right: 5px solid black;
 }
 #threeTwo {
-    background-color:fuchsia;
+    background-color:cadetblue;
     border-right: 5px solid black;
 }
 #threeThree {
-    background-color:honeydew;
+    background-color:cadetblue;
+}
+.playerTurn {
+    grid-row: 6;
+    grid-column: 3 / 5;
+    margin: auto;
+    font-size: 50px;
 }
