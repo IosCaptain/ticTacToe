@@ -3,6 +3,9 @@ let playerOneWinCount = 0
 let playerTwoWinCount = 0
 let tieCount = 0
 
+let audioOne = new Audio('sound1.wav')
+let audioTwo = new Audio('sound2.wav')
+
 let playerOneWinCountContainer = document.querySelector('.playerOneWinCount')
 let playerTwoWinCountContainer = document.querySelector('.playerTwoWinCount')
 let tieCountContainer = document.querySelector('.tieCount')
@@ -43,6 +46,7 @@ function markXorO(event) {
         event.currentTarget.removeEventListener('click', markXorO)
         console.log(event.currentTarget)
         playerTurn.innerHTML = 'Player 2 Turn'
+        audioOne.play()
     } else {
         event.currentTarget.innerHTML = 'O'
         clickCounter += 1
@@ -50,6 +54,7 @@ function markXorO(event) {
         event.currentTarget.removeEventListener('click', markXorO)
         console.log(event.currentTarget)
         playerTurn.innerHTML = 'Player 1 Turn'
+        audioTwo.play()
     }
     let row1WinningContainer = parseInt(oneOne.getAttribute('data-point')) + parseInt(oneTwo.getAttribute('data-point')) + parseInt(oneThree.getAttribute('data-point'))
     let row2WinningContainer = parseInt(twoOne.getAttribute('data-point')) + parseInt(twoTwo.getAttribute('data-point')) + parseInt(twoThree.getAttribute('data-point'))
@@ -64,7 +69,6 @@ function markXorO(event) {
 
     switch(true) {
         case (row1WinningContainer == 3 || row2WinningContainer == 3 || row3WinningContainer == 3 || column1WinningContainer == 3 || column2WinningContainer == 3 || column3WinningContainer == 3 || diagonal1WinningContainer == 3 || diagonal2WinningContainer == 3):
-            alert('Player 1 has won')
             for(i=0; i<boardButtons.length; i++) {
                 boardButtons[i].removeEventListener('click', markXorO)
             }
@@ -73,7 +77,6 @@ function markXorO(event) {
             playerOneWinCountContainer.innerHTML = `Player One Wins:${playerOneWinCount}`
             break
         case (row1WinningContainer == -3 || row2WinningContainer == -3 || row3WinningContainer == -3 || column1WinningContainer == -3 || column2WinningContainer == -3 || column3WinningContainer == -3 || diagonal1WinningContainer == -3 || diagonal2WinningContainer == -3):
-            alert('Player 2 has won')
             for(i=0; i<boardButtons.length; i++) {
                 boardButtons[i].removeEventListener('click', markXorO)
             }
@@ -82,7 +85,6 @@ function markXorO(event) {
             playerTwoWinCountContainer.innerHTML = `Player Two Wins:${playerTwoWinCount}`
             break
         case (row1WinningContainer + row2WinningContainer + row3WinningContainer == 1):
-            alert('This game is a tie')
             playerTurn.innerHTML = 'This game is a tie'
             tieCount += 1
             tieCountContainer.innerHTML = `Ties:${tieCount}`
