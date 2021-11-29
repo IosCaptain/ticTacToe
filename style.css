@@ -64,7 +64,11 @@ nav {
 }
 .playerTurn {
     grid-row: 6;
-    grid-column: 3 / 5;
-    margin: auto;
+    grid-column: 2 / span 4;
     font-size: 50px;
+    text-align: center;
+    margin: auto;
+}
+.newGame {
+    grid-row: 3;
 }

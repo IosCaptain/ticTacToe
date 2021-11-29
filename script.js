@@ -1,6 +1,8 @@
 let clickCounter = 0
 let boardButtons = document.querySelectorAll('.buttons')
 let playerTurn = document.querySelector('.playerTurn')
+let newGameButton = document.querySelector('.newGame')
+let squareContainer = document.querySelector('#squareContainer')
 
 let oneOne = document.querySelector('#oneOne')
 let oneTwo = document.querySelector('#oneTwo')
@@ -15,8 +17,10 @@ let threeThree = document.querySelector('#threeThree')
 for(i=0; i<boardButtons.length; i++) {
     boardButtons[i].addEventListener('click', markXorO)
 }
-
-
+newGameButton.addEventListener('click',function() {
+    squareContainer.reload()
+})
+// Functions
 function markXorO(event) {
     if(clickCounter % 2 == 0) {
         event.currentTarget.innerHTML = 'X'
@@ -61,37 +65,6 @@ function markXorO(event) {
             break
         case (row1WinningContainer + row2WinningContainer + row3WinningContainer == 1):
             alert('This game is a tie')
+            playerTurn.innerHTML = 'This game is a tie'
     }    
 }
-
-// switch(true) {
-//     case (row1WinningContainer == 3 || row2WinningContainer == 3 || row3WinningContainer == 3 || column1WinningContainer == 3 || column2WinningContainer == 3 || column3WinningContainer == 3 || diagonal1WinningContainer == 3 || diagonal2WinningContainer == 3):
-//         alert('Player 1 has won')
-//         for(i=0; i<boardButtons.length; i++) {
-//             boardButtons[i].removeEventListener('click', markXorO)
-//         }
-//         break
-//     case (row1WinningContainer == -3 || row2WinningContainer == -3 || row3WinningContainer == -3 || column1WinningContainer == -3 || column2WinningContainer == -3 || column3WinningContainer == -3 || diagonal1WinningContainer == -3 || diagonal2WinningContainer == -3):
-//         alert('Player 2 has won')
-//         for(i=0; i<boardButtons.length; i++) {
-//             boardButtons[i].removeEventListener('click', markXorO)
-//         }
-//         break
-//     default:
-//         alert('This game is a tie')
-// }
-
-
-    // if (row1WinningContainer == 3 || row2WinningContainer == 3 || row3WinningContainer == 3 || column1WinningContainer == 3 || column2WinningContainer == 3 || column3WinningContainer == 3 || diagonal1WinningContainer == 3 || diagonal2WinningContainer == 3) {
-    //     alert('Player 1 has won')
-    //     for(i=0; i<boardButtons.length; i++) {
-    //         boardButtons[i].removeEventListener('click', markXorO)
-    //     }
-    // } if (row1WinningContainer == -3 || row2WinningContainer == -3 || row3WinningContainer == -3 || column1WinningContainer == -3 || column2WinningContainer == -3 || column3WinningContainer == -3 || diagonal1WinningContainer == -3 || diagonal2WinningContainer == -3) {
-    //     alert('Player 2 has won')
-    //     for(i=0; i<boardButtons.length; i++) {
-    //         boardButtons[i].removeEventListener('click', markXorO)
-    //     }
-    // } if (row1WinningContainer + row2WinningContainer + row3WinningContainer == 1) {
-    //     alert('This game is a tie, please restart')
-    // }
