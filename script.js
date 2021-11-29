@@ -1,7 +1,7 @@
 let clickCounter = 0
-let playerOneWinCount = 0
-let playerTwoWinCount = 0
-let tieCount = 0
+let playerOneWinCount = parseInt(localStorage.getItem('player1'))
+let playerTwoWinCount = parseInt(localStorage.getItem('player2'))
+let tieCount = parseInt(localStorage.getItem('ties'))
 
 let audioOne = new Audio('sound1.wav')
 let audioTwo = new Audio('sound2.wav')
@@ -10,9 +10,14 @@ let playerOneWinCountContainer = document.querySelector('.playerOneWinCount')
 let playerTwoWinCountContainer = document.querySelector('.playerTwoWinCount')
 let tieCountContainer = document.querySelector('.tieCount')
 
+playerOneWinCountContainer.innerHTML = `Player One Wins: ${playerOneWinCount}`
+playerTwoWinCountContainer.innerHTML = `Player Two Wins: ${playerTwoWinCount}`
+tieCountContainer.innerHTML = `Ties: ${tieCount}`
+
 let boardButtons = document.querySelectorAll('.buttons')
 let playerTurn = document.querySelector('.playerTurn')
 let newGameButton = document.querySelector('.newGame')
+let resetGlobalCountButton = document.querySelector('.resetCount')
 let squareContainer = document.querySelector('#squareContainer')
 
 let oneOne = document.querySelector('#oneOne')
@@ -37,6 +42,15 @@ newGameButton.addEventListener('click',function() {
         playerTurn.innerHTML = 'Player 1 Turn'
     }
 })
+resetGlobalCountButton.addEventListener('click', function() {
+    playerOneWinCount = 0
+    playerTwoWinCount = 0
+    tieCount = 0
+    playerOneWinCountContainer.innerHTML = `Player One Wins: ${playerOneWinCount}`
+    playerTwoWinCountContainer.innerHTML = `Player Two Wins: ${playerTwoWinCount}`
+    tieCountContainer.innerHTML = `Ties: ${tieCount}`
+
+})
 // Functions
 function markXorO(event) {
     if(clickCounter % 2 == 0) {
@@ -47,6 +61,7 @@ function markXorO(event) {
         console.log(event.currentTarget)
         playerTurn.innerHTML = 'Player 2 Turn'
         audioOne.play()
+        checkForWin()
     } else {
         event.currentTarget.innerHTML = 'O'
         clickCounter += 1
@@ -55,7 +70,11 @@ function markXorO(event) {
         console.log(event.currentTarget)
         playerTurn.innerHTML = 'Player 1 Turn'
         audioTwo.play()
+        checkForWin()
     }
+}
+
+function checkForWin() {
     let row1WinningContainer = parseInt(oneOne.getAttribute('data-point')) + parseInt(oneTwo.getAttribute('data-point')) + parseInt(oneThree.getAttribute('data-point'))
     let row2WinningContainer = parseInt(twoOne.getAttribute('data-point')) + parseInt(twoTwo.getAttribute('data-point')) + parseInt(twoThree.getAttribute('data-point'))
     let row3WinningContainer = parseInt(threeOne.getAttribute('data-point')) + parseInt(threeTwo.getAttribute('data-point')) + parseInt(threeThree.getAttribute('data-point'))
@@ -74,7 +93,8 @@ function markXorO(event) {
             }
             playerTurn.innerHTML = 'Congratulations Player 1'
             playerOneWinCount += 1
-            playerOneWinCountContainer.innerHTML = `Player One Wins:${playerOneWinCount}`
+            playerOneWinCountContainer.innerHTML = `Player One Wins: ${playerOneWinCount}`
+            storeWinsCounter()
             break
         case (row1WinningContainer == -3 || row2WinningContainer == -3 || row3WinningContainer == -3 || column1WinningContainer == -3 || column2WinningContainer == -3 || column3WinningContainer == -3 || diagonal1WinningContainer == -3 || diagonal2WinningContainer == -3):
             for(i=0; i<boardButtons.length; i++) {
@@ -82,11 +102,19 @@ function markXorO(event) {
             }
             playerTurn.innerHTML = 'Congratulations Player 2'
             playerTwoWinCount += 1
-            playerTwoWinCountContainer.innerHTML = `Player Two Wins:${playerTwoWinCount}`
+            playerTwoWinCountContainer.innerHTML = `Player Two Wins: ${playerTwoWinCount}`
+            storeWinsCounter()
             break
         case (row1WinningContainer + row2WinningContainer + row3WinningContainer == 1):
             playerTurn.innerHTML = 'This game is a tie'
             tieCount += 1
-            tieCountContainer.innerHTML = `Ties:${tieCount}`
+            tieCountContainer.innerHTML = `Ties: ${tieCount}`
+            storeWinsCounter()
     }    
+}
+
+function storeWinsCounter() {
+    localStorage.setItem('player1', playerOneWinCount)
+    localStorage.setItem('player2', playerTwoWinCount)
+    localStorage.setItem('ties', tieCount)
 }
