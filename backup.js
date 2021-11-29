@@ -12,3 +12,12 @@
     // } if (row1WinningContainer + row2WinningContainer + row3WinningContainer == 1) {
     //     alert('This game is a tie, please restart')
     // }
+
+    // function resetBoard() {
+//     for(i=0; i<boardButtons.length; i++) {
+//         boardButtons[i].innerHTML = '-'
+//         boardButtons[i].addEventListener('click', markXorO)
+//         boardButtons[i].removeAttribute('data-point')
+//         clickCounter = 0
+//         playerTurn.innerHTML = 'Player 1 Turn'
+//     }

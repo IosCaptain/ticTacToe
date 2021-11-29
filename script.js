@@ -1,4 +1,12 @@
 let clickCounter = 0
+let playerOneWinCount = 0
+let playerTwoWinCount = 0
+let tieCount = 0
+
+let playerOneWinCountContainer = document.querySelector('.playerOneWinCount')
+let playerTwoWinCountContainer = document.querySelector('.playerTwoWinCount')
+let tieCountContainer = document.querySelector('.tieCount')
+
 let boardButtons = document.querySelectorAll('.buttons')
 let playerTurn = document.querySelector('.playerTurn')
 let newGameButton = document.querySelector('.newGame')
@@ -18,7 +26,13 @@ for(i=0; i<boardButtons.length; i++) {
     boardButtons[i].addEventListener('click', markXorO)
 }
 newGameButton.addEventListener('click',function() {
-    squareContainer.reload()
+    for(i=0; i<boardButtons.length; i++) {
+        boardButtons[i].innerHTML = '-'
+        boardButtons[i].addEventListener('click', markXorO)
+        boardButtons[i].removeAttribute('data-point')
+        clickCounter = 0
+        playerTurn.innerHTML = 'Player 1 Turn'
+    }
 })
 // Functions
 function markXorO(event) {
@@ -55,6 +69,8 @@ function markXorO(event) {
                 boardButtons[i].removeEventListener('click', markXorO)
             }
             playerTurn.innerHTML = 'Congratulations Player 1'
+            playerOneWinCount += 1
+            playerOneWinCountContainer.innerHTML = `Player One Wins:${playerOneWinCount}`
             break
         case (row1WinningContainer == -3 || row2WinningContainer == -3 || row3WinningContainer == -3 || column1WinningContainer == -3 || column2WinningContainer == -3 || column3WinningContainer == -3 || diagonal1WinningContainer == -3 || diagonal2WinningContainer == -3):
             alert('Player 2 has won')
@@ -62,9 +78,13 @@ function markXorO(event) {
                 boardButtons[i].removeEventListener('click', markXorO)
             }
             playerTurn.innerHTML = 'Congratulations Player 2'
+            playerTwoWinCount += 1
+            playerTwoWinCountContainer.innerHTML = `Player Two Wins:${playerTwoWinCount}`
             break
         case (row1WinningContainer + row2WinningContainer + row3WinningContainer == 1):
             alert('This game is a tie')
             playerTurn.innerHTML = 'This game is a tie'
+            tieCount += 1
+            tieCountContainer.innerHTML = `Ties:${tieCount}`
     }    
 }
