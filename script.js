@@ -1,7 +1,9 @@
 let clickCounter = 0
-let playerOneWinCount = parseInt(localStorage.getItem('player1'))
-let playerTwoWinCount = parseInt(localStorage.getItem('player2'))
-let tieCount = parseInt(localStorage.getItem('ties'))
+let playerOneWinCount = 0//parseInt(localStorage.getItem('player1')) // Needs to be changed
+let playerTwoWinCount = 0//parseInt(localStorage.getItem('player2')) // Needs to be changed
+let tieCount = 0//parseInt(localStorage.getItem('ties')) // Needs to be changed
+
+firstTimeOpening()
 
 let audioOne = new Audio('sound1.wav')
 let audioTwo = new Audio('sound2.wav')
@@ -117,4 +119,18 @@ function storeWinsCounter() {
     localStorage.setItem('player1', playerOneWinCount)
     localStorage.setItem('player2', playerTwoWinCount)
     localStorage.setItem('ties', tieCount)
+}
+
+function firstTimeOpening() {
+    if (localStorage.getItem('player1') != 'NaN') {
+        playerOneWinCount = parseInt(localStorage.getItem('player1'))
+    } if (localStorage.getItem('player2') != 'NaN') {
+        playerTwoWinCount = parseInt(localStorage.getItem('player2'))
+    } if(localStorage.getItem('ties') != 'NaN') {
+        tieCount = parseInt(localStorage.getItem('ties'))
+    } else {
+        playerOneWinCount = 0
+        playerTwoWinCount = 0
+        tieCount = 0
+    }
 }
