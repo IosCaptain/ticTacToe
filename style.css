@@ -21,6 +21,7 @@ nav {
     grid-row: 2 / 6;
     grid-column: 1;
     text-align: center;
+    padding: 10px;
 }
 
 #oneOne {
@@ -71,4 +72,10 @@ nav {
 }
 .newGame {
     grid-row: 3;
+    padding: 7px;
+    margin: 5px;
+}
+.resetCount {
+    padding: 7px;
+    margin-bottom: 50px;
 }
