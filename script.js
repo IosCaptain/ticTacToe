@@ -3,7 +3,7 @@ let playerOneWinCount = 0//parseInt(localStorage.getItem('player1')) // Needs to
 let playerTwoWinCount = 0//parseInt(localStorage.getItem('player2')) // Needs to be changed
 let tieCount = 0//parseInt(localStorage.getItem('ties')) // Needs to be changed
 
-firstTimeOpening()
+//document.addEventListener('DOMContentLoaded', firstTimeOpening)
 
 let audioOne = new Audio('sound1.wav')
 let audioTwo = new Audio('sound2.wav')
